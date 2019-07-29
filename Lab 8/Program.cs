@@ -18,7 +18,7 @@ namespace Lab8
 
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine($"Something went wrong - heres the exception {e.Message}");
             }
 
 
