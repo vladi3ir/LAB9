@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Lab8
@@ -15,28 +15,16 @@ namespace Lab8
                 RunApp(input);
 
             }
-            //catch (IndexOutOfRangeException e)
-            //{
 
-            //    //Console.WriteLine("Index out of range");
-            //    //Console.WriteLine(e.Message);
-            //}
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("not a good answer");
+                Console.WriteLine(e);
             }
-            //catch (FormatException e)
-            //{
-            //    //Console.WriteLine("not a good answer");
-            //    //Console.WriteLine(e.Message);
-            //    //throw new Exception("I Blew up");
 
-            //}
 
             finally
             {
-                //Console.Clear();
-                //RunApp();
+
             }
 
 
@@ -191,7 +179,7 @@ namespace Lab8
 
             return value;
 
-        }
+        } //
 
         public static string knowMoreYesOrNo(string input)
         {
@@ -210,6 +198,7 @@ namespace Lab8
                     Console.WriteLine("Thanks!");
                     isValidResponse = true;
                     response = "exit";
+                    break;
                 }
                 else if (int.TryParse(input, out ID))
                 {
