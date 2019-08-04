@@ -10,18 +10,27 @@ namespace Lab8
 
             try
             {
-                Console.WriteLine("Welcome to our C# class.  Which student would you like to learn more about? (enter a  number 1-20): ");
+                int[] a = new int[20];
+
+                Console.WriteLine("Welcome to our C# class.  Which student would you like to learn more about? (enter a  number 1-20): ");
                 string input = Console.ReadLine();
+                int tnum;
+                tnum = a[int.Parse(input)];
+
                 RunApp(input);
 
             }
 
-            catch (Exception e)
+            catch (IndexOutOfRangeException e)
             {
                 Console.WriteLine($"Something went wrong - heres the exception {e.Message}");
             }
 
+            catch (FormatException e2)
+            {
+                Console.WriteLine($"Something went wrong - heres the exception {e2.Message}");
 
+            }
             finally
             {
 
@@ -85,7 +94,10 @@ namespace Lab8
             {
                 int ID = 0;
 
-                string userInput = Console.ReadLine();
+
+                string userInput = (Console.ReadLine());
+                //string userInput = askForNumber(Console.ReadLine());
+
 
 
                 if (userInput == "hometown")
@@ -127,6 +139,31 @@ namespace Lab8
                         break;
                     }
                 }
+                else if (userInput == "add" | userInput == "Add")
+                {
+
+                    while (true)
+                    {
+                        Console.WriteLine("Enter the persons name");
+                        string newName = Console.ReadLine();
+                        Console.WriteLine("Enter persons home town");
+                        string newHomeTown = Console.ReadLine();
+                        Console.WriteLine("Enter persons favorite food");
+                        string newFavFood = Console.ReadLine();
+                        Console.WriteLine("Enter persons favorite color");
+                        string newFavColor = Console.ReadLine();
+                        Console.WriteLine("Enter persons favorite number");
+                        string newFavNumber = Console.ReadLine();
+
+                        //names.Add();
+                        //ListhomeTown.Add();
+                        //ListfavFood.Add();
+                        //ListFavColor.Add();
+                        //ListFavNumber.Add();
+
+                    }
+                }
+
 
 
                 else
@@ -140,6 +177,20 @@ namespace Lab8
 
         }
 
+        public static string askForNumber(string words)
+        {
+            string cya = "ok";
+            try
+            {
+                string word = Console.ReadLine();
+            }
+            catch (FormatException ex)
+            {
+                Console.Write("Not a valid number. Please try again.");
+            }
+            return cya;
+
+        }
         public static string DataSet(int input, int index)
         {
 
@@ -155,6 +206,7 @@ namespace Lab8
             { "color1","color2","color3","color4","color5","color6","color7","color8","color9","color10","color11","color12","color13","color14","color15","color16","color17","color18","color19","color20"};
             List<string> ListFavNumber = new List<string>
             { " 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9"," 10"," 11"," 12"," 13"," 14"," 15"," 16"," 17"," 18"," 19"," 20"};
+
 
             if (input == 1)
             {
@@ -183,30 +235,32 @@ namespace Lab8
 
         public static string knowMoreYesOrNo(string input)
         {
+            string Input = input;
             string response = "stuff";
             bool isValidResponse = false;
             while (!isValidResponse)
             {
                 int ID = 0;
-                if (input == "y" | input == "Y")
+                if (Input == "y" | Input == "Y")
                 {
                     Console.WriteLine("what would you like to know about? \"hometown\" or \"favorite food\" or \"favorite color\" or \"favorite number\"");
                     isValidResponse = true;
                 }
-                else if (input == "n" | input == "N")
+                else if (Input == "n" | Input == "N")
                 {
                     Console.WriteLine("Thanks!");
                     isValidResponse = true;
                     response = "exit";
+                    Environment.Exit(0);
                     break;
                 }
-                else if (int.TryParse(input, out ID))
+                else if (int.TryParse(Input, out ID))
                 {
-                    response = Convert.ToString(IndexOutOfRange(input));
+                    response = Convert.ToString(IndexOutOfRange(Input));
                     RunApp(Convert.ToString(ID));
                     //isValidResponse = true;
 
-                    //else if (int.TryParse(input, out ID))
+                    //else if (int.TryParse(Input, out ID))
                     //{
                     //string secondInput = knowMoreYesOrNo(Console.ReadLine());
                     //RunApp(.Parse(secondInput));
@@ -219,7 +273,7 @@ namespace Lab8
                 {
                     Console.WriteLine("didnt accept that, would you like to know more about this student [y/n] or enter a number [1-20] to seach another student");
                     isValidResponse = false;
-                    input = Console.ReadLine();
+                    Input = Console.ReadLine();
                 }
 
             }
@@ -246,7 +300,6 @@ namespace Lab8
                     input = Console.ReadLine();
 
 
-
                 }
                 else
                 {
@@ -254,14 +307,35 @@ namespace Lab8
                     isValidInput = true;
                 }
 
-
-
             }
 
             return ID = ID - 1;
         }
 
+        //public static string AddNewUser(string a, string b, string c, string d, string e)
+        //{
+        //    Console.WriteLine("Enter the persons name");
+        //    newName = Console.ReadLine();
+        //    Console.WriteLine("Enter persons home town");
+        //    newHomeTown = Console.ReadLine();
+        //    Console.WriteLine("Enter persons favorite food");
+        //    newFavFood = Console.ReadLine();
+        //    Console.WriteLine("Enter persons favorite color");
+        //    newFavColor = Console.ReadLine();
+        //    Console.WriteLine("Enter persons favorite number");
+        //    newFavNumber = Console.ReadLine();
+
+
+        //    return (newName,newHomeTown,newFavFood,newFavColor,newFavNumber)
+
+        //    names.Add();
+        //    ListhomeTown.Add();
+        //    ListfavFood.Add();
+        //    ListFavColor.Add();
+        //    ListFavNumber.Add()
+
+        //}
+
 
     }
 }
-
